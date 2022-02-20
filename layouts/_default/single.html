@@ -16,7 +16,7 @@
 			{{ .Content }}
 		</div>
 		{{ $parentPage := . }}
-		<h1>Linked to:</h1>
+		<h3>Linked to:</h3>
 		<ul>
 		{{ range .Params.linkedArticles }}
 		{{ $ref := ref $parentPage . }}
