@@ -14,7 +14,7 @@
 		{{- partial "post_toc.html" . -}}
 		<div class="content post__content clearfix">
 			{{ .Content }}
-		</div>
+		
 		{{ $parentPage := . }}
 		<h4>Linked to:</h4>
 		<ul>
@@ -42,6 +42,7 @@
 		{{ end }}
 		{{ end }}
 		</ul>
+		</div>
 		{{- if .Params.tags }}
 		<footer class="post__footer">
 			{{ partial "post_tags.html" . }}
