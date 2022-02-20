@@ -15,6 +15,17 @@
 		<div class="content post__content clearfix">
 			{{ .Content }}
 		</div>
+		{{ $parentPage := . }}
+		<h1>Linked to:</h1>
+		<ul>
+		{{ range .Params.linkedArticles }}
+		{{ $ref := ref $parentPage . }}
+		{{ $page := $parentPage.GetPage . }}		
+		  <li>
+			<a href="{{ $ref }}">{{ $page.Title }}</a>
+		  </li>
+		{{ end }}
+		</ul>
 		{{- if .Params.tags }}
 		<footer class="post__footer">
 			{{ partial "post_tags.html" . }}
