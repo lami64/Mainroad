@@ -26,6 +26,21 @@
 		  </li>
 		{{ end }}
 		</ul>
+		{{ $parentPage := . }}
+		<h3>Referenced by:</h3>
+		<ul>
+		{{ range .Site.RegularPages }}
+		{{ $page := . }}
+		{{ range .Params.linkedArticles}}
+		{{ $linkedPage := $parentPage.GetPage .}}
+			{{ if eq $linkedPage $parentPage }}
+				<li>
+					<a href="{{ $page.Permalink }}">{{ $page.Title }}</a>
+				</li>
+			{{ end }}
+		{{ end }}
+		{{ end }}
+		</ul>
 		{{- if .Params.tags }}
 		<footer class="post__footer">
 			{{ partial "post_tags.html" . }}
